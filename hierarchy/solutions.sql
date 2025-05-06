@@ -21,9 +21,14 @@ FROM employees
 WHERE manager_id IS NOT NULL
 GROUP BY manager_id;
 
-
 /*** 🧾 List All Managers (i.e., people who have at least one report) ***/
 SELECT DISTINCT e.id, e.name
 FROM employees e
 JOIN employees r ON e.id = r.manager_id;
+
+/***  Get the Name of Each Employee and Their Manager  ***/
+SELECT e.name AS employee, m.name AS manager
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.id;
+
 
