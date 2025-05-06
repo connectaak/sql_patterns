@@ -12,3 +12,18 @@ WITH RECURSIVE levels AS (
 SELECT *
 FROM levels
 ORDER BY level, name;
+
+
+
+/*** ❌ Direct Reports — Without Recursion SELECT manager_id, COUNT(*) AS direct_reports ***/
+SELECT manager_id, COUNT(*) AS direct_reports
+FROM employees
+WHERE manager_id IS NOT NULL
+GROUP BY manager_id;
+
+
+/*** 🧾 List All Managers (i.e., people who have at least one report) ***/
+SELECT DISTINCT e.id, e.name
+FROM employees e
+JOIN employees r ON e.id = r.manager_id;
+
