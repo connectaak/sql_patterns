@@ -11,3 +11,14 @@ SELECT
   ) AS last_signup,
   SUM(signups) OVER (PARTITION BY user_type ORDER BY signup_date) AS running_total
 FROM app_signups;
+
+
+/** 📈 Running Totals: SUM() OVER() **/
+
+SELECT
+  signup_date,
+  user_type,
+  signups,
+  SUM(signups) OVER (PARTITION BY user_type ORDER BY signup_date) AS running_total
+FROM app_signups;
+
