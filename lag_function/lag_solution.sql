@@ -1,3 +1,4 @@
+/** Lag, Lead, First Value, Last Value ***/
 SELECT
   signup_date,
   user_type,
